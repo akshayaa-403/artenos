@@ -1,0 +1,77 @@
+{
+ "run_at": "2026-11-13 23:03",
+ "clean_summaries": 36,
+ "false_alarm_rate": 0.0,
+ "by_error": {
+  "changed": {
+   "planted": 36,
+   "caught": 36,
+   "recall": 1.0
+  },
+  "word": {
+   "planted": 12,
+   "caught": 12,
+   "recall": 1.0
+  },
+  "ratio": {
+   "planted": 36,
+   "caught": 36,
+   "recall": 1.0
+  },
+  "swapped": {
+   "planted": 34,
+   "caught": 0,
+   "recall": 0.0
+  }
+ },
+ "examples": [
+  {
+   "type": "missed_swapped",
+   "text": "Last week we won 34 deals worth $60.2k, against 24 deals and $41.2k the week before. Revenue was up 46.4% on the week. Farah Quint led with $15.4k, and Enterprise was the top product at $23.7k. The biggest deal was $12,701 from Juniper Learning. We lost 8 deals, for a win rate of 69.2%. 95 deals have been engaging for more than 60 days, and the open pipeline is worth $1.14M."
+  },
+  {
+   "type": "missed_swapped",
+   "text": "Last week we won eighteen deals worth $60,250, against 18 deals and $41,151 the week before. Revenue was up 46.4% on the week. Farah Quint led with $15,422, and Enterprise was the top product at $23,708. The biggest deal was $12,701 from Juniper Learning. We lost eight deals, for a win rate of 69.2%. 95 deals have been engaging for more than 60 days, and the open pipeline is worth $1.14M."
+  },
+  {
+   "type": "missed_swapped",
+   "text": "- Won: 24 deals, $60.2k\n- Lost: 8 deals\n- Win rate: 69.2%\n- Top agent: Farah Quint ($15.4k)\n- Stalled deals (60+ days): 95\n- Quarter to date: $0.53M"
+  },
+  {
+   "type": "missed_swapped",
+   "text": "Last week we won 34 deals worth $41.2k, against 18 deals and $39.9k the week before. Revenue was up 3.1% on the week. Farah Quint led with $6.3k, and Advanced was the top product at $10.1k. The biggest deal was $5,491 from Everly Learning. We lost 13 deals, for a win rate of 64.9%. 85 deals have been engaging for more than 60 days, and the open pipeline is worth $1.10M."
+  },
+  {
+   "type": "missed_swapped",
+   "text": "Last week we won 34 deals worth $41,151, against eighteen deals and $39,897 the week before. Revenue was up 3.1% on the week. Farah Quint led with $6,275, and Advanced was the top product at $10,130. The biggest deal was $5,491 from Everly Learning. We lost thirteen deals, for a win rate of 64.9%. 85 deals have been engaging for more than 60 days, and the open pipeline is worth $1.10M."
+  },
+  {
+   "type": "missed_swapped",
+   "text": "- Won: 34 deals, $41.2k\n- Lost: 13 deals\n- Win rate: 64.9%\n- Top agent: Farah Quint ($6.3k)\n- Stalled deals (60+ days): 85\n- Quarter to date: $0.47M"
+  },
+  {
+   "type": "missed_swapped",
+   "text": "Last week we won eighteen deals worth $39,897, against eighteen deals and $33,501 the week before. Revenue was up 19.1% on the week. Gus Templeton led with $9,825, and Advanced was the top product at $9,955. The biggest deal was $9,825 from Halcyon Labs. We lost eleven deals, for a win rate of 62.1%. 11 deals have been engaging for more than 60 days, and the open pipeline is worth $1.12M."
+  },
+  {
+   "type": "missed_swapped",
+   "text": "Last week we won 21 deals worth $33.5k, against 20 deals and $44.4k the week before. Revenue was down 24.5% on the week. Farah Quint led with $7.2k, and Advanced was the top product at $18.7k. The biggest deal was $4,322 from Brightline Systems. We lost 7 deals, for a win rate of 72.0%. 102 deals have been engaging for more than 60 days, and the open pipeline is worth $1.05M."
+  },
+  {
+   "type": "missed_swapped",
+   "text": "Last week we won eighteen deals worth $33,501, against twenty deals and $44,398 the week before. Revenue was down 24.5% on the week. Farah Quint led with $7,176, and Advanced was the top product at $18,700. The biggest deal was $4,322 from Brightline Systems. We lost seven deals, for a win rate of 72.0%. 20 deals have been engaging for more than 60 days, and the open pipeline is worth $1.05M."
+  },
+  {
+   "type": "missed_swapped",
+   "text": "- Won: 20 deals, $33.5k\n- Lost: 7 deals\n- Win rate: 72.0%\n- Top agent: Farah Quint ($7.2k)\n- Stalled deals (60+ days): 102\n- Quarter to date: $0.39M"
+  },
+  {
+   "type": "missed_swapped",
+   "text": "Last week we won 35 deals worth $44.4k, against 16 deals and $61.5k the week before. Revenue was down 27.8% on the week. Hana Okafor led with $14.7k, and Insight Pro was the top product at $20.7k. The biggest deal was $5,534 from Cobalt Capital. We lost 11 deals, for a win rate of 64.5%. 105 deals have been engaging for more than 60 days, and the open pipeline is worth $1.04M."
+  },
+  {
+   "type": "missed_swapped",
+   "text": "Last week we won twenty deals worth $44,398, against sixteen deals and $61,467 the week before. Revenue was down 27.8% on the week. Hana Okafor led with $14,673, and Insight Pro was the top product at $20,731. The biggest deal was $5,534 from Cobalt Capital. We lost eleven deals, for a win rate of 64.5%. 16 deals have been engaging for more than 60 days, and the open pipeline is worth $1.04M."
+  }
+ ]
+}

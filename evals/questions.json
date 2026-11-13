@@ -1,0 +1,1087 @@
+[
+ {
+  "question": "How long has Hana Okafor worked here?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q001"
+ },
+ {
+  "question": "How many Enterprise Plus deals were won in 2026?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE deal_stage = 'Won' AND product = 'Enterprise Plus' AND close_date LIKE '2026-%'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q002"
+ },
+ {
+  "question": "How many accounts are in the energy sector?",
+  "sql": "SELECT COUNT(*) FROM accounts WHERE sector = 'energy'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q003"
+ },
+ {
+  "question": "How many accounts are in the retail sector?",
+  "sql": "SELECT COUNT(*) FROM accounts WHERE sector = 'retail'",
+  "answerable": true,
+  "split": "test",
+  "id": "q004"
+ },
+ {
+  "question": "How many accounts are in the software sector?",
+  "sql": "SELECT COUNT(*) FROM accounts WHERE sector = 'software'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q005"
+ },
+ {
+  "question": "How many accounts have never won a deal with us?",
+  "sql": "SELECT COUNT(*) FROM accounts a WHERE NOT EXISTS (SELECT 1 FROM sales_pipeline p WHERE p.account = a.account AND p.deal_stage = 'Won')",
+  "answerable": true,
+  "split": "test",
+  "id": "q006"
+ },
+ {
+  "question": "How many accounts in the North region are there?",
+  "sql": "SELECT COUNT(*) FROM accounts WHERE region = 'North'",
+  "answerable": true,
+  "split": "test",
+  "id": "q007"
+ },
+ {
+  "question": "How many accounts were established after 2000?",
+  "sql": "SELECT COUNT(*) FROM accounts WHERE year_established > 2000",
+  "answerable": true,
+  "split": "dev",
+  "id": "q008"
+ },
+ {
+  "question": "How many agents on Dana Whitlock's team have won more than 40 deals?",
+  "sql": "SELECT COUNT(*) FROM (SELECT p.sales_agent FROM sales_pipeline p JOIN sales_teams t ON t.sales_agent = p.sales_agent WHERE t.manager = 'Dana Whitlock' AND p.deal_stage = 'Won' GROUP BY p.sales_agent HAVING COUNT(*) > 40)",
+  "answerable": true,
+  "split": "dev",
+  "id": "q009"
+ },
+ {
+  "question": "How many deals are currently in the Engaging stage?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE deal_stage = 'Engaging'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q010"
+ },
+ {
+  "question": "How many deals are currently in the Prospecting stage?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE deal_stage = 'Prospecting'",
+  "answerable": true,
+  "split": "test",
+  "id": "q011"
+ },
+ {
+  "question": "How many deals are in each stage? Give stage and count.",
+  "sql": "SELECT deal_stage, COUNT(*) FROM sales_pipeline GROUP BY deal_stage",
+  "answerable": true,
+  "split": "dev",
+  "id": "q012"
+ },
+ {
+  "question": "How many deals are there in total?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline",
+  "answerable": true,
+  "split": "test",
+  "id": "q013"
+ },
+ {
+  "question": "How many deals did Gus Templeton lose?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE sales_agent = 'Gus Templeton' AND deal_stage = 'Lost'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q014"
+ },
+ {
+  "question": "How many deals did Kira Solberg lose?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE sales_agent = 'Kira Solberg' AND deal_stage = 'Lost'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q015"
+ },
+ {
+  "question": "How many deals entered the Engaging stage in 2025-06?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE strftime('%Y-%m', engage_date) = '2025-06'",
+  "answerable": true,
+  "split": "test",
+  "id": "q016"
+ },
+ {
+  "question": "How many deals entered the Engaging stage in 2026-02?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE strftime('%Y-%m', engage_date) = '2026-02'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q017"
+ },
+ {
+  "question": "How many deals has Aiden Marsh won in total?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE sales_agent = 'Aiden Marsh' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q018"
+ },
+ {
+  "question": "How many deals has Bea Lindqvist closed, won or lost, in 2026?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE sales_agent = 'Bea Lindqvist' AND deal_stage IN ('Won','Lost') AND close_date LIKE '2026-%'",
+  "answerable": true,
+  "split": "test",
+  "id": "q019"
+ },
+ {
+  "question": "How many deals has Cobalt Networks lost with us?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE account = 'Cobalt Networks' AND deal_stage = 'Lost'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q020"
+ },
+ {
+  "question": "How many deals has Farah Quint closed, won or lost, in 2026?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE sales_agent = 'Farah Quint' AND deal_stage IN ('Won','Lost') AND close_date LIKE '2026-%'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q021"
+ },
+ {
+  "question": "How many deals has Hana Okafor won in total?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE sales_agent = 'Hana Okafor' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "test",
+  "id": "q022"
+ },
+ {
+  "question": "How many deals has Ola Mensah won in total?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE sales_agent = 'Ola Mensah' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q023"
+ },
+ {
+  "question": "How many deals has Silverton Works lost with us?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE account = 'Silverton Works' AND deal_stage = 'Lost'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q024"
+ },
+ {
+  "question": "How many deals has each manager's team won? Give manager and count.",
+  "sql": "SELECT t.manager, COUNT(*) FROM sales_pipeline p JOIN sales_teams t ON t.sales_agent = p.sales_agent WHERE p.deal_stage = 'Won' GROUP BY t.manager",
+  "answerable": true,
+  "split": "dev",
+  "id": "q025"
+ },
+ {
+  "question": "How many deals have been in the Engaging stage for more than 60 days?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE deal_stage = 'Engaging' AND julianday('2026-06-28') - julianday(engage_date) > 60",
+  "answerable": true,
+  "split": "test",
+  "id": "q026"
+ },
+ {
+  "question": "How many deals have been in the Engaging stage for more than 90 days?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE deal_stage = 'Engaging' AND julianday('2026-06-28') - julianday(engage_date) > 90",
+  "answerable": true,
+  "split": "dev",
+  "id": "q027"
+ },
+ {
+  "question": "How many deals have no account assigned?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE account IS NULL",
+  "answerable": true,
+  "split": "test",
+  "id": "q028"
+ },
+ {
+  "question": "How many deals were lost in May 2026?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE deal_stage = 'Lost' AND close_date BETWEEN '2026-05-01' AND '2026-05-31'",
+  "answerable": true,
+  "split": "test",
+  "id": "q029"
+ },
+ {
+  "question": "How many deals were won between 2026-06-22 and 2026-06-28?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE deal_stage = 'Won' AND close_date BETWEEN '2026-06-22' AND '2026-06-28'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q030"
+ },
+ {
+  "question": "How many deals were won in 2025-03?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE deal_stage = 'Won' AND strftime('%Y-%m', close_date) = '2025-03'",
+  "answerable": true,
+  "split": "test",
+  "id": "q031"
+ },
+ {
+  "question": "How many deals were won in 2025-11?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE deal_stage = 'Won' AND strftime('%Y-%m', close_date) = '2025-11'",
+  "answerable": true,
+  "split": "test",
+  "id": "q032"
+ },
+ {
+  "question": "How many deals were won in 2026-04?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE deal_stage = 'Won' AND strftime('%Y-%m', close_date) = '2026-04'",
+  "answerable": true,
+  "split": "test",
+  "id": "q033"
+ },
+ {
+  "question": "How many different products has Halcyon Energy bought?",
+  "sql": "SELECT COUNT(DISTINCT product) FROM sales_pipeline WHERE account = 'Halcyon Energy' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q034"
+ },
+ {
+  "question": "How many employees does Dunmore Works have?",
+  "sql": "SELECT employees FROM accounts WHERE account = 'Dunmore Works'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q035"
+ },
+ {
+  "question": "How many employees does Vantage Learning have?",
+  "sql": "SELECT employees FROM accounts WHERE account = 'Vantage Learning'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q036"
+ },
+ {
+  "question": "How many hours did the team spend on the Cobalt Capital deal?",
+  "sql": null,
+  "answerable": false,
+  "split": "test",
+  "id": "q037"
+ },
+ {
+  "question": "How many leads came from the spring trade show?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q038"
+ },
+ {
+  "question": "How many notes have been written about deals with Fernway Group?",
+  "sql": "SELECT COUNT(*) FROM deal_notes n JOIN sales_pipeline p ON p.opportunity_id = n.opportunity_id WHERE p.account = 'Fernway Group'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q039"
+ },
+ {
+  "question": "How many notes have been written about deals with Tidewater Energy?",
+  "sql": "SELECT COUNT(*) FROM deal_notes n JOIN sales_pipeline p ON p.opportunity_id = n.opportunity_id WHERE p.account = 'Tidewater Energy'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q040"
+ },
+ {
+  "question": "How many open deals are with accounts in the finance sector?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline p JOIN accounts a ON a.account = p.account WHERE a.sector = 'finance' AND p.deal_stage IN ('Prospecting','Engaging')",
+  "answerable": true,
+  "split": "test",
+  "id": "q041"
+ },
+ {
+  "question": "How many open deals does Dina Rosales have?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE sales_agent = 'Dina Rosales' AND deal_stage IN ('Prospecting','Engaging')",
+  "answerable": true,
+  "split": "dev",
+  "id": "q042"
+ },
+ {
+  "question": "How many open deals does Ivo Brandt have?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE sales_agent = 'Ivo Brandt' AND deal_stage IN ('Prospecting','Engaging')",
+  "answerable": true,
+  "split": "test",
+  "id": "q043"
+ },
+ {
+  "question": "How many products are in the Analytics series?",
+  "sql": "SELECT COUNT(*) FROM products WHERE series = 'Analytics'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q044"
+ },
+ {
+  "question": "How many products are in the Core series?",
+  "sql": "SELECT COUNT(*) FROM products WHERE series = 'Core'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q045"
+ },
+ {
+  "question": "How many sales agents are there?",
+  "sql": "SELECT COUNT(*) FROM sales_teams",
+  "answerable": true,
+  "split": "dev",
+  "id": "q046"
+ },
+ {
+  "question": "How many sales agents report to Dana Whitlock?",
+  "sql": "SELECT COUNT(*) FROM sales_teams WHERE manager = 'Dana Whitlock'",
+  "answerable": true,
+  "split": "test",
+  "id": "q047"
+ },
+ {
+  "question": "How many sales agents report to Priya Venkatesh?",
+  "sql": "SELECT COUNT(*) FROM sales_teams WHERE manager = 'Priya Venkatesh'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q048"
+ },
+ {
+  "question": "How many sales calls did Farah Quint make last week?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q049"
+ },
+ {
+  "question": "How many support tickets has Zephyr Energy opened?",
+  "sql": null,
+  "answerable": false,
+  "split": "test",
+  "id": "q050"
+ },
+ {
+  "question": "How many website visitors did Brightline Retail have?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q051"
+ },
+ {
+  "question": "How many won deals closed above the product's list price?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline p JOIN products pr ON pr.product = p.product WHERE p.deal_stage = 'Won' AND p.close_value > pr.sales_price",
+  "answerable": true,
+  "split": "dev",
+  "id": "q052"
+ },
+ {
+  "question": "How many won deals had a close value above 20,000 dollars?",
+  "sql": "SELECT COUNT(*) FROM sales_pipeline WHERE deal_stage = 'Won' AND close_value > 20000",
+  "answerable": true,
+  "split": "dev",
+  "id": "q053"
+ },
+ {
+  "question": "How much commission did Aiden Marsh earn in 2025?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q054"
+ },
+ {
+  "question": "How much revenue have we won from Brightline Systems?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE account = 'Brightline Systems' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q055"
+ },
+ {
+  "question": "How much revenue have we won from Westbrook Capital?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE account = 'Westbrook Capital' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q056"
+ },
+ {
+  "question": "How much revenue was won in the last 30 days?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE deal_stage = 'Won' AND julianday('2026-06-28') - julianday(close_date) < 30",
+  "answerable": true,
+  "split": "test",
+  "id": "q057"
+ },
+ {
+  "question": "List the top 3 sales agents by won revenue.",
+  "sql": "SELECT sales_agent FROM sales_pipeline WHERE deal_stage = 'Won' GROUP BY sales_agent ORDER BY SUM(close_value) DESC LIMIT 3",
+  "answerable": true,
+  "split": "dev",
+  "id": "q058"
+ },
+ {
+  "question": "List the top 5 accounts by won revenue.",
+  "sql": "SELECT account FROM sales_pipeline WHERE deal_stage = 'Won' GROUP BY account ORDER BY SUM(close_value) DESC LIMIT 5",
+  "answerable": true,
+  "split": "dev",
+  "id": "q059"
+ },
+ {
+  "question": "On average, how many days do won Enterprise deals take from engage date to close date?",
+  "sql": "SELECT AVG(julianday(close_date) - julianday(engage_date)) FROM sales_pipeline WHERE deal_stage = 'Won' AND product = 'Enterprise'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q060"
+ },
+ {
+  "question": "On average, how many days does a won deal take from engage date to close date?",
+  "sql": "SELECT AVG(julianday(close_date) - julianday(engage_date)) FROM sales_pipeline WHERE deal_stage = 'Won'",
+  "answerable": true,
+  "split": "test",
+  "id": "q061"
+ },
+ {
+  "question": "What discount code did Pinecrest Health use?",
+  "sql": null,
+  "answerable": false,
+  "split": "test",
+  "id": "q062"
+ },
+ {
+  "question": "What is Cole Hartigan's win rate?",
+  "sql": "SELECT 100.0 * SUM(deal_stage = 'Won') / SUM(deal_stage IN ('Won','Lost')) FROM sales_pipeline WHERE sales_agent = 'Cole Hartigan'",
+  "answerable": true,
+  "split": "test",
+  "id": "q063"
+ },
+ {
+  "question": "What is Farah Quint's win rate?",
+  "sql": "SELECT 100.0 * SUM(deal_stage = 'Won') / SUM(deal_stage IN ('Won','Lost')) FROM sales_pipeline WHERE sales_agent = 'Farah Quint'",
+  "answerable": true,
+  "split": "test",
+  "id": "q064"
+ },
+ {
+  "question": "What is Leo Castellan's sales quota for 2026?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q065"
+ },
+ {
+  "question": "What is Mona Fairweather's win rate?",
+  "sql": "SELECT 100.0 * SUM(deal_stage = 'Won') / SUM(deal_stage IN ('Won','Lost')) FROM sales_pipeline WHERE sales_agent = 'Mona Fairweather'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q066"
+ },
+ {
+  "question": "What is our marketing spend this quarter?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q067"
+ },
+ {
+  "question": "What is the average annual revenue in millions of USD across all accounts?",
+  "sql": "SELECT AVG(revenue_musd) FROM accounts",
+  "answerable": true,
+  "split": "dev",
+  "id": "q068"
+ },
+ {
+  "question": "What is the average annual revenue, in millions of USD, of accounts in the finance sector?",
+  "sql": "SELECT AVG(revenue_musd) FROM accounts WHERE sector = 'finance'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q069"
+ },
+ {
+  "question": "What is the average annual revenue, in millions of USD, of accounts in the medical sector?",
+  "sql": "SELECT AVG(revenue_musd) FROM accounts WHERE sector = 'medical'",
+  "answerable": true,
+  "split": "test",
+  "id": "q070"
+ },
+ {
+  "question": "What is the average close value of won Advanced deals?",
+  "sql": "SELECT AVG(close_value) FROM sales_pipeline WHERE product = 'Advanced' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "test",
+  "id": "q071"
+ },
+ {
+  "question": "What is the average close value of won Enterprise deals?",
+  "sql": "SELECT AVG(close_value) FROM sales_pipeline WHERE product = 'Enterprise' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q072"
+ },
+ {
+  "question": "What is the average close value of won Standard deals?",
+  "sql": "SELECT AVG(close_value) FROM sales_pipeline WHERE product = 'Standard' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q073"
+ },
+ {
+  "question": "What is the average deal size in euros?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q074"
+ },
+ {
+  "question": "What is the average won deal value for the Insight product in 2026?",
+  "sql": "SELECT AVG(close_value) FROM sales_pipeline WHERE deal_stage = 'Won' AND product = 'Insight' AND close_date LIKE '2026-%'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q075"
+ },
+ {
+  "question": "What is the cheapest product in the Analytics series?",
+  "sql": "SELECT product FROM products WHERE series = 'Analytics' ORDER BY sales_price ASC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q076"
+ },
+ {
+  "question": "What is the customer satisfaction score for Kestrel Systems?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q077"
+ },
+ {
+  "question": "What is the gross margin on the Enterprise product?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q078"
+ },
+ {
+  "question": "What is the largest single won deal value?",
+  "sql": "SELECT MAX(close_value) FROM sales_pipeline WHERE deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q079"
+ },
+ {
+  "question": "What is the list price of Enterprise Plus?",
+  "sql": "SELECT sales_price FROM products WHERE product = 'Enterprise Plus'",
+  "answerable": true,
+  "split": "test",
+  "id": "q080"
+ },
+ {
+  "question": "What is the list price of Insight?",
+  "sql": "SELECT sales_price FROM products WHERE product = 'Insight'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q081"
+ },
+ {
+  "question": "What is the most expensive product?",
+  "sql": "SELECT product FROM products ORDER BY sales_price DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q082"
+ },
+ {
+  "question": "What is the overall win rate across all closed deals?",
+  "sql": "SELECT 100.0 * SUM(deal_stage = 'Won') / SUM(deal_stage IN ('Won','Lost')) FROM sales_pipeline",
+  "answerable": true,
+  "split": "test",
+  "id": "q083"
+ },
+ {
+  "question": "What is the phone number of our contact at Halcyon Labs?",
+  "sql": null,
+  "answerable": false,
+  "split": "test",
+  "id": "q084"
+ },
+ {
+  "question": "What is the smallest won deal value?",
+  "sql": "SELECT MIN(close_value) FROM sales_pipeline WHERE deal_stage = 'Won'",
+  "answerable": true,
+  "split": "test",
+  "id": "q085"
+ },
+ {
+  "question": "What is the total discount given on won deals, list price minus close value, summed?",
+  "sql": "SELECT SUM(pr.sales_price - p.close_value) FROM sales_pipeline p JOIN products pr ON pr.product = p.product WHERE p.deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q086"
+ },
+ {
+  "question": "What is the total list value of all deals currently in the Engaging stage?",
+  "sql": "SELECT SUM(pr.sales_price) FROM sales_pipeline p JOIN products pr ON pr.product = p.product WHERE p.deal_stage = 'Engaging'",
+  "answerable": true,
+  "split": "test",
+  "id": "q087"
+ },
+ {
+  "question": "What is the total revenue from won Enterprise Plus deals?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE product = 'Enterprise Plus' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q088"
+ },
+ {
+  "question": "What is the total revenue from won Insight Pro deals?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE product = 'Insight Pro' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q089"
+ },
+ {
+  "question": "What is the total revenue from won Starter deals?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE product = 'Starter' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "test",
+  "id": "q090"
+ },
+ {
+  "question": "What is the total won revenue for Dana Whitlock's team?",
+  "sql": "SELECT SUM(p.close_value) FROM sales_pipeline p JOIN sales_teams t ON t.sales_agent = p.sales_agent WHERE t.manager = 'Dana Whitlock' AND p.deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q091"
+ },
+ {
+  "question": "What is the total won revenue for Marcus Oyelaran's team?",
+  "sql": "SELECT SUM(p.close_value) FROM sales_pipeline p JOIN sales_teams t ON t.sales_agent = p.sales_agent WHERE t.manager = 'Marcus Oyelaran' AND p.deal_stage = 'Won'",
+  "answerable": true,
+  "split": "test",
+  "id": "q092"
+ },
+ {
+  "question": "What is the total won revenue for Priya Venkatesh's team?",
+  "sql": "SELECT SUM(p.close_value) FROM sales_pipeline p JOIN sales_teams t ON t.sales_agent = p.sales_agent WHERE t.manager = 'Priya Venkatesh' AND p.deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q093"
+ },
+ {
+  "question": "What is the total won revenue from accounts in the education sector?",
+  "sql": "SELECT SUM(p.close_value) FROM sales_pipeline p JOIN accounts a ON a.account = p.account WHERE a.sector = 'education' AND p.deal_stage = 'Won'",
+  "answerable": true,
+  "split": "test",
+  "id": "q094"
+ },
+ {
+  "question": "What is the total won revenue from accounts in the telecom sector?",
+  "sql": "SELECT SUM(p.close_value) FROM sales_pipeline p JOIN accounts a ON a.account = p.account WHERE a.sector = 'telecom' AND p.deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q095"
+ },
+ {
+  "question": "What is the total won revenue from accounts with more than 10,000 employees?",
+  "sql": "SELECT SUM(p.close_value) FROM sales_pipeline p JOIN accounts a ON a.account = p.account WHERE a.employees > 10000 AND p.deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q096"
+ },
+ {
+  "question": "What is the total won revenue from the Core series?",
+  "sql": "SELECT SUM(p.close_value) FROM sales_pipeline p JOIN products pr ON pr.product = p.product WHERE pr.series = 'Core' AND p.deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q097"
+ },
+ {
+  "question": "What is the total won revenue from the Platform series?",
+  "sql": "SELECT SUM(p.close_value) FROM sales_pipeline p JOIN products pr ON pr.product = p.product WHERE pr.series = 'Platform' AND p.deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q098"
+ },
+ {
+  "question": "What is the win rate for Enterprise?",
+  "sql": "SELECT 100.0 * SUM(deal_stage = 'Won') / SUM(deal_stage IN ('Won','Lost')) FROM sales_pipeline WHERE product = 'Enterprise'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q099"
+ },
+ {
+  "question": "What is the win rate for Starter?",
+  "sql": "SELECT 100.0 * SUM(deal_stage = 'Won') / SUM(deal_stage IN ('Won','Lost')) FROM sales_pipeline WHERE product = 'Starter'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q100"
+ },
+ {
+  "question": "What is the won revenue per product? Give product and revenue.",
+  "sql": "SELECT product, SUM(close_value) FROM sales_pipeline WHERE deal_stage = 'Won' GROUP BY product",
+  "answerable": true,
+  "split": "dev",
+  "id": "q101"
+ },
+ {
+  "question": "What is total won revenue so far this quarter?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE deal_stage = 'Won' AND close_date BETWEEN '2026-04-01' AND '2026-06-30'",
+  "answerable": true,
+  "split": "test",
+  "id": "q102"
+ },
+ {
+  "question": "What percentage of won revenue came from the Platform series?",
+  "sql": "SELECT 100.0 * SUM(CASE WHEN pr.series = 'Platform' THEN p.close_value ELSE 0 END) / SUM(p.close_value) FROM sales_pipeline p JOIN products pr ON pr.product = p.product WHERE p.deal_stage = 'Won'",
+  "answerable": true,
+  "split": "test",
+  "id": "q103"
+ },
+ {
+  "question": "What was Cole Hartigan's won revenue in 2025?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE sales_agent = 'Cole Hartigan' AND deal_stage = 'Won' AND close_date LIKE '2025-%'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q104"
+ },
+ {
+  "question": "What was Kira Solberg's won revenue in 2025?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE sales_agent = 'Kira Solberg' AND deal_stage = 'Won' AND close_date LIKE '2025-%'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q105"
+ },
+ {
+  "question": "What was the date of the most recent won deal?",
+  "sql": "SELECT MAX(close_date) FROM sales_pipeline WHERE deal_stage = 'Won'",
+  "answerable": true,
+  "split": "test",
+  "id": "q106"
+ },
+ {
+  "question": "What was the win rate in 2025?",
+  "sql": "SELECT 100.0 * SUM(deal_stage = 'Won') / SUM(deal_stage IN ('Won','Lost')) FROM sales_pipeline WHERE close_date LIKE '2025-%'",
+  "answerable": true,
+  "split": "test",
+  "id": "q107"
+ },
+ {
+  "question": "What was the won revenue for each month of 2026? Give month (YYYY-MM) and revenue.",
+  "sql": "SELECT strftime('%Y-%m', close_date), SUM(close_value) FROM sales_pipeline WHERE deal_stage = 'Won' AND close_date LIKE '2026-%' GROUP BY 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q108"
+ },
+ {
+  "question": "What was total won revenue in 2025?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE deal_stage = 'Won' AND strftime('%Y', close_date) = '2025'",
+  "answerable": true,
+  "split": "test",
+  "id": "q109"
+ },
+ {
+  "question": "What was total won revenue in 2026?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE deal_stage = 'Won' AND strftime('%Y', close_date) = '2026'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q110"
+ },
+ {
+  "question": "What was total won revenue last quarter?",
+  "sql": "SELECT SUM(close_value) FROM sales_pipeline WHERE deal_stage = 'Won' AND close_date BETWEEN '2026-01-01' AND '2026-03-31'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q111"
+ },
+ {
+  "question": "What will total revenue be in Q3 2026?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q112"
+ },
+ {
+  "question": "When did the earliest deal enter the Engaging stage?",
+  "sql": "SELECT MIN(engage_date) FROM sales_pipeline",
+  "answerable": true,
+  "split": "dev",
+  "id": "q113"
+ },
+ {
+  "question": "When does Oakridge Energy's contract come up for renewal?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q114"
+ },
+ {
+  "question": "When was the most recent deal note written?",
+  "sql": "SELECT MAX(written_on) FROM deal_notes",
+  "answerable": true,
+  "split": "test",
+  "id": "q115"
+ },
+ {
+  "question": "Which account established before 1990 has generated the most won revenue?",
+  "sql": "SELECT a.account FROM sales_pipeline p JOIN accounts a ON a.account = p.account WHERE a.year_established < 1990 AND p.deal_stage = 'Won' GROUP BY a.account ORDER BY SUM(p.close_value) DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q116"
+ },
+ {
+  "question": "Which account has generated the most won revenue?",
+  "sql": "SELECT account FROM sales_pipeline WHERE deal_stage = 'Won' GROUP BY account ORDER BY SUM(close_value) DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q117"
+ },
+ {
+  "question": "Which account has the fewest employees?",
+  "sql": "SELECT account FROM accounts ORDER BY employees ASC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q118"
+ },
+ {
+  "question": "Which account has the highest annual revenue?",
+  "sql": "SELECT account FROM accounts ORDER BY revenue_musd DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q119"
+ },
+ {
+  "question": "Which account has the most won deals?",
+  "sql": "SELECT account FROM sales_pipeline WHERE deal_stage = 'Won' GROUP BY account ORDER BY COUNT(*) DESC, account LIMIT 1",
+  "answerable": true,
+  "split": "test",
+  "id": "q120"
+ },
+ {
+  "question": "Which accounts churned last year?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q121"
+ },
+ {
+  "question": "Which accounts in the software sector have open deals?",
+  "sql": "SELECT DISTINCT p.account FROM sales_pipeline p JOIN accounts a ON a.account = p.account WHERE a.sector = 'software' AND p.deal_stage IN ('Prospecting','Engaging')",
+  "answerable": true,
+  "split": "dev",
+  "id": "q122"
+ },
+ {
+  "question": "Which accounts were established before 1980?",
+  "sql": "SELECT account FROM accounts WHERE year_established < 1980",
+  "answerable": true,
+  "split": "dev",
+  "id": "q123"
+ },
+ {
+  "question": "Which agent has the highest employee satisfaction rating?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q124"
+ },
+ {
+  "question": "Which agent has the most deals that have been engaging for more than 60 days?",
+  "sql": "SELECT sales_agent FROM sales_pipeline WHERE deal_stage = 'Engaging' AND julianday('2026-06-28') - julianday(engage_date) > 60 GROUP BY sales_agent ORDER BY COUNT(*) DESC, sales_agent LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q125"
+ },
+ {
+  "question": "Which agent has the most open deals?",
+  "sql": "SELECT sales_agent FROM sales_pipeline WHERE deal_stage IN ('Prospecting','Engaging') GROUP BY sales_agent ORDER BY COUNT(*) DESC, sales_agent LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q126"
+ },
+ {
+  "question": "Which agent won the most revenue in Q1 2026?",
+  "sql": "SELECT sales_agent FROM sales_pipeline WHERE deal_stage = 'Won' AND close_date BETWEEN '2026-01-01' AND '2026-03-31' GROUP BY sales_agent ORDER BY SUM(close_value) DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q127"
+ },
+ {
+  "question": "Which agent's deals have the most notes?",
+  "sql": "SELECT p.sales_agent FROM deal_notes n JOIN sales_pipeline p ON p.opportunity_id = n.opportunity_id GROUP BY p.sales_agent ORDER BY COUNT(*) DESC, p.sales_agent LIMIT 1",
+  "answerable": true,
+  "split": "test",
+  "id": "q128"
+ },
+ {
+  "question": "Which agents have a win rate above 60 percent?",
+  "sql": "SELECT sales_agent FROM sales_pipeline GROUP BY sales_agent HAVING 100.0 * SUM(deal_stage = 'Won') / SUM(deal_stage IN ('Won','Lost')) > 60",
+  "answerable": true,
+  "split": "test",
+  "id": "q129"
+ },
+ {
+  "question": "Which competitor did we lose the Granite Systems deal to?",
+  "sql": null,
+  "answerable": false,
+  "split": "test",
+  "id": "q130"
+ },
+ {
+  "question": "Which country is Juniper Health headquartered in?",
+  "sql": null,
+  "answerable": false,
+  "split": "dev",
+  "id": "q131"
+ },
+ {
+  "question": "Which deals will close next month?",
+  "sql": null,
+  "answerable": false,
+  "split": "test",
+  "id": "q132"
+ },
+ {
+  "question": "Which manager's team has the best win rate?",
+  "sql": "SELECT t.manager FROM sales_pipeline p JOIN sales_teams t ON t.sales_agent = p.sales_agent GROUP BY t.manager ORDER BY 100.0 * SUM(p.deal_stage = 'Won') / SUM(p.deal_stage IN ('Won','Lost')) DESC LIMIT 1",
+  "answerable": true,
+  "split": "test",
+  "id": "q133"
+ },
+ {
+  "question": "Which month of 2025 had the highest won revenue? Give the month as YYYY-MM.",
+  "sql": "SELECT strftime('%Y-%m', close_date) FROM sales_pipeline WHERE deal_stage = 'Won' AND close_date LIKE '2025-%' GROUP BY 1 ORDER BY SUM(close_value) DESC LIMIT 1",
+  "answerable": true,
+  "split": "test",
+  "id": "q134"
+ },
+ {
+  "question": "Which product has the highest win rate?",
+  "sql": "SELECT product FROM sales_pipeline GROUP BY product ORDER BY 100.0 * SUM(deal_stage = 'Won') / SUM(deal_stage IN ('Won','Lost')) DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q135"
+ },
+ {
+  "question": "Which product series has the highest average won deal value?",
+  "sql": "SELECT pr.series FROM sales_pipeline p JOIN products pr ON pr.product = p.product WHERE p.deal_stage = 'Won' GROUP BY pr.series ORDER BY AVG(p.close_value) DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q136"
+ },
+ {
+  "question": "Which products has Juniper Health bought from us?",
+  "sql": "SELECT DISTINCT product FROM sales_pipeline WHERE account = 'Juniper Health' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "test",
+  "id": "q137"
+ },
+ {
+  "question": "Which products has Ola Mensah never won a deal for?",
+  "sql": "SELECT product FROM products WHERE product NOT IN (SELECT product FROM sales_pipeline WHERE sales_agent = 'Ola Mensah' AND deal_stage = 'Won')",
+  "answerable": true,
+  "split": "dev",
+  "id": "q138"
+ },
+ {
+  "question": "Which products has Redfern Capital bought from us?",
+  "sql": "SELECT DISTINCT product FROM sales_pipeline WHERE account = 'Redfern Capital' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q139"
+ },
+ {
+  "question": "Which region's accounts have brought in the most won revenue?",
+  "sql": "SELECT a.region FROM sales_pipeline p JOIN accounts a ON a.account = p.account WHERE p.deal_stage = 'Won' GROUP BY a.region ORDER BY SUM(p.close_value) DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q140"
+ },
+ {
+  "question": "Which regional office does Bea Lindqvist work in?",
+  "sql": "SELECT regional_office FROM sales_teams WHERE sales_agent = 'Bea Lindqvist'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q141"
+ },
+ {
+  "question": "Which regional office does Nico Draper work in?",
+  "sql": "SELECT regional_office FROM sales_teams WHERE sales_agent = 'Nico Draper'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q142"
+ },
+ {
+  "question": "Which regional office has the highest total won revenue?",
+  "sql": "SELECT t.regional_office FROM sales_pipeline p JOIN sales_teams t ON t.sales_agent = p.sales_agent WHERE p.deal_stage = 'Won' GROUP BY t.regional_office ORDER BY SUM(p.close_value) DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q143"
+ },
+ {
+  "question": "Which sales agent closed the largest single won deal?",
+  "sql": "SELECT sales_agent FROM sales_pipeline WHERE deal_stage = 'Won' ORDER BY close_value DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q144"
+ },
+ {
+  "question": "Which sales agent has the highest total won revenue?",
+  "sql": "SELECT sales_agent FROM sales_pipeline WHERE deal_stage = 'Won' GROUP BY sales_agent ORDER BY SUM(close_value) DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q145"
+ },
+ {
+  "question": "Which sales agent has won the fewest deals?",
+  "sql": "SELECT sales_agent FROM sales_pipeline WHERE deal_stage = 'Won' GROUP BY sales_agent ORDER BY COUNT(*) ASC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q146"
+ },
+ {
+  "question": "Which sales agent has won the most deals?",
+  "sql": "SELECT sales_agent FROM sales_pipeline WHERE deal_stage = 'Won' GROUP BY sales_agent ORDER BY COUNT(*) DESC LIMIT 1",
+  "answerable": true,
+  "split": "test",
+  "id": "q147"
+ },
+ {
+  "question": "Which sales agent has won the most revenue from Meridian Networks?",
+  "sql": "SELECT sales_agent FROM sales_pipeline WHERE account = 'Meridian Networks' AND deal_stage = 'Won' GROUP BY sales_agent ORDER BY SUM(close_value) DESC LIMIT 1",
+  "answerable": true,
+  "split": "test",
+  "id": "q148"
+ },
+ {
+  "question": "Which sector has brought in the most won revenue?",
+  "sql": "SELECT a.sector FROM sales_pipeline p JOIN accounts a ON a.account = p.account WHERE p.deal_stage = 'Won' GROUP BY a.sector ORDER BY SUM(p.close_value) DESC LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q149"
+ },
+ {
+  "question": "Which sector has the most accounts?",
+  "sql": "SELECT sector FROM accounts GROUP BY sector ORDER BY COUNT(*) DESC, sector LIMIT 1",
+  "answerable": true,
+  "split": "dev",
+  "id": "q150"
+ },
+ {
+  "question": "Who is Eli Novak's manager?",
+  "sql": "SELECT manager FROM sales_teams WHERE sales_agent = 'Eli Novak'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q151"
+ },
+ {
+  "question": "Who is Jules Amari's manager?",
+  "sql": "SELECT manager FROM sales_teams WHERE sales_agent = 'Jules Amari'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q152"
+ },
+ {
+  "question": "Who is the CEO of Meridian Networks?",
+  "sql": null,
+  "answerable": false,
+  "split": "test",
+  "id": "q153"
+ },
+ {
+  "question": "With how many different accounts has Aiden Marsh won deals?",
+  "sql": "SELECT COUNT(DISTINCT account) FROM sales_pipeline WHERE sales_agent = 'Aiden Marsh' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q154"
+ },
+ {
+  "question": "With how many different accounts has Leo Castellan won deals?",
+  "sql": "SELECT COUNT(DISTINCT account) FROM sales_pipeline WHERE sales_agent = 'Leo Castellan' AND deal_stage = 'Won'",
+  "answerable": true,
+  "split": "dev",
+  "id": "q155"
+ }
+]
