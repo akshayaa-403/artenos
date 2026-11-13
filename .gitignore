@@ -15,3 +15,6 @@ node_modules/
 .next/
 next-env.d.ts
 .vercel/
+
+# Next.js static export
+out/

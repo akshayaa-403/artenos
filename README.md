@@ -6,7 +6,7 @@ Three things a sales team needs from an LLM, each one measured:
 
 1. **Ask the CRM.** A sales question in plain English becomes SQL, runs read-only, and comes back as an answer with the query and the rows behind it. Five prompt versions are scored on a fixed question set, so each change shows what it was worth. When the data can't answer, it says so.
 2. **The Monday summary, with every number checked.** The week's figures come from SQL. The model writes the sentences. A checker finds every number in the text and looks it up in the figures; anything it can't find is flagged, and the live version asks for one rewrite.
-3. **Running it for real.** A Next.js front end over a FastAPI backend, deployable to Vercel, that traces every request (latency, tokens, cost, failures, thumbs up or down) and caps what a visitor can spend.
+3. **Running it for real.** A Next.js front end and a FastAPI backend in one Docker container, deployed on Render, that traces every request (latency, tokens, cost, failures, thumbs up or down) and caps what a visitor can spend.
 
 Results: [RESULTS.md](RESULTS.md) (regenerate with `python -m evals.report`).
 
@@ -60,18 +60,25 @@ npm run dev                       # Next.js on :3000 (terminal 2)
 
 Model answers are cached in `.cache/llm/`, so re-running an eval only pays for prompts that changed.
 
-## Deploy (Vercel)
+## Deploy (Render)
 
-Import the repo in Vercel, then set `GEMINI_API_KEY` (and optionally `GEMINI_MODEL`, `DAILY_REQUEST_CAP`) under Project Settings → Environment Variables. `next.config.mjs` sends `/api/*` to the Python function in `api/index.py`, and the database is rebuilt from the seed into `/tmp` on a cold start.
+One container: `npm run build` exports the Next.js pages to `out/`, and FastAPI serves them alongside `/api`. The [Dockerfile](Dockerfile) builds both, and [render.yaml](render.yaml) describes the service.
 
-Telemetry is a SQLite file. On Vercel it lives in `/tmp`, so it is per instance and resets on a cold start. Use a hosted database if the numbers need to persist.
+1. Push this repo to GitHub.
+2. In Render: **New → Blueprint**, pick the repo. Render reads `render.yaml`.
+3. When it asks for `GEMINI_API_KEY`, paste the key. It is stored in Render, never in the repo.
+4. Every push to the default branch redeploys. The health check is `/api/health`.
+
+On the free plan the service sleeps after about 15 minutes idle, so the first visit after that takes around a minute. The disk isn't persistent, so telemetry resets when the service restarts or wakes. Use a hosted database if the numbers need to persist.
+
+To try the container locally: `docker build -t ask-the-crm . && docker run --env-file .env -p 8000:8000 ask-the-crm`, then open http://localhost:8000.
 
 ## Layout
 
 ```
 core/      crm.py (data)  guard.py  llm.py (Gemini, stdlib only)  ask.py  digest.py  checker.py  score.py  stats.py  telemetry.py
 evals/     questions.py  run_ask.py  run_injection.py  run_digest.py  checker_eval.py  gate.py  report.py  results/
-api/       index.py (FastAPI)
+api/       index.py (FastAPI: /api and the exported pages)
 app/       Next.js pages: Ask, Weekly summary, Results, Telemetry
 tests/     no-model unit tests
 ```

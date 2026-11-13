@@ -1,9 +1,9 @@
 """Request traces for the live demo: latency, tokens, cost, failures, feedback.
 
-One SQLite file. Locally it persists in .data/; on Vercel it lives in /tmp,
-so it is per instance and resets on a cold start.
-ponytail: per-instance store; move to a hosted database (Vercel Postgres,
-Turso) when the numbers need to survive restarts.
+One SQLite file in .data/. On Render's free plan the disk is not persistent,
+so it resets when the service restarts or wakes from sleep.
+ponytail: local file; move to a hosted database (Render Postgres, Turso) when
+the numbers need to survive restarts.
 """
 import sqlite3
 import time

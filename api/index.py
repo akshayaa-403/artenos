@@ -1,5 +1,6 @@
-"""The API behind the live demo (FastAPI). Locally: uvicorn api.index:app --port 8000.
-On Vercel this file is the Python function and Next.js rewrites /api/* to it.
+"""The live demo's server (FastAPI): the API under /api, and the exported Next.js
+pages (out/, from `npm run build`) at every other path, so one process serves
+everything. Locally: uvicorn api.index:app --port 8000.
 
 Every model-backed request is traced (latency, tokens, cost, outcome) and can
 be rated by the visitor. The demo spends the owner's Gemini key, so requests
@@ -15,6 +16,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from fastapi import FastAPI, HTTPException, Request  # noqa: E402
+from fastapi.staticfiles import StaticFiles  # noqa: E402
 from pydantic import BaseModel, Field  # noqa: E402
 
 from core import ask, config, crm, digest, llm, telemetry  # noqa: E402
@@ -148,3 +150,9 @@ def results():
                 data["current_dev_misses"] = wrong[:25]
             out[name] = data
     return out
+
+
+# Last, so /api routes win. Absent in development, where `next dev` serves the pages.
+_OUT = Path(__file__).resolve().parent.parent / "out"
+if _OUT.is_dir():
+    app.mount("/", StaticFiles(directory=_OUT, html=True), name="web")

@@ -23,9 +23,9 @@ def _load_dotenv(path: Path) -> None:
 
 _load_dotenv(ROOT / ".env")
 
-ON_VERCEL = bool(os.environ.get("VERCEL"))
-# Vercel's deployment filesystem is read-only; only /tmp can be written.
-DATA_DIR = Path("/tmp") if ON_VERCEL else ROOT / ".data"
+# The CRM database and the telemetry log. On Render's free plan the disk is
+# not persistent: telemetry resets whenever the service restarts or sleeps.
+DATA_DIR = Path(os.environ.get("DATA_DIR", ROOT / ".data"))
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 CRM_DB = Path(os.environ.get("CRM_DB", DATA_DIR / "crm.sqlite"))
